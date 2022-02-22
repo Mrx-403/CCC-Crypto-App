@@ -5,8 +5,10 @@
   >
     <SyncLoader :loading="!showData" />
   </div>
+
   <div class="main-container bg-gray-900 w-full" v-if="showData">
     <Header />
+    <Drawer />
     <MarketGlobalStatus :globalData="globalData" />
     <SearchBox />
     <div class="flex w-4/5 sm:w-2/3 mx-auto py-4 items-center justify-between">
@@ -56,6 +58,7 @@ import Header from "../components/Header.vue";
 import MarketGlobalStatus from "../components/MarketGlobalStatus.vue";
 import SearchBox from "../components/SearchBox.vue";
 import CoinBox from "../components/CoinBox.vue";
+import Drawer from "../components/Drawer.vue";
 import SyncLoader from "vue-spinner/src/SyncLoader.vue";
 export default {
   name: "Home",
@@ -64,6 +67,7 @@ export default {
     MarketGlobalStatus,
     SearchBox,
     CoinBox,
+    Drawer,
     SyncLoader,
   },
   data() {

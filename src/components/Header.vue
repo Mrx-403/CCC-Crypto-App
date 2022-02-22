@@ -1,7 +1,8 @@
 <template>
   <div class="w-full flex p-3 pt-6">
     <div
-      class="back-btn flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full shadow-md bg-gray-800"
+      class="menu-btn flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full shadow-md bg-gray-800 cursor-pointer"
+      @click="toggleDrawer"
     >
       <i class="bx bx-menu text-white text-3xl sm:text-4xl"></i>
     </div>
@@ -19,7 +20,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    toggleDrawer() {
+      this.$store.state.isDrawerOpen = !this.$store.state.isDrawerOpen;
+    },
+  },
+};
 </script>
 
 <style></style>
