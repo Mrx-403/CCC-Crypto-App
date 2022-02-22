@@ -8,6 +8,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+* {
+    -webkit-tap-highlight-color: transparent;
+}
 html {
   scroll-behavior: smooth;
 }
