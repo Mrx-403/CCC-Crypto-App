@@ -98,12 +98,14 @@
         required
         placeholder="Email Address"
         class="py-3 px-5 bg-gray-700 shadow-lg rounded-lg w-4/5 mb-4 outline-none border-none text-gray-300 text-sm"
+        @focus="keboardToggleHandler($event)"
       />
       <input
         type="password"
         required
         placeholder="Password"
         class="py-3 px-5 bg-gray-700 shadow-lg rounded-lg w-4/5 mb-3 outline-none border-none text-gray-300 text-sm"
+        @focus="keboardToggleHandler($event)"
       />
       <h2
         class="w-4/5 change-auth-modal-text mb-2 text-sm font-medium text-gray-400 hover:text-green-500 cursor-pointer"
@@ -158,6 +160,16 @@
 <script>
 export default {
   name: "LoginForm",
+  methods : {
+    keboardToggleHandler(event){
+      const parentDiv = event.target.closest("#modal-container");
+      const isMobile = /Mobi/.test(navigator.userAgent)
+      if(window.innerHeight < 1000 && isMobile){
+        parentDiv.style.top = '5%'
+        parentDiv.style.bottom = '5%'
+      }
+    }
+  }
 };
 </script>
 

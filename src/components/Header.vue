@@ -4,7 +4,7 @@
       class="menu-btn flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full shadow-md bg-gray-800 cursor-pointer"
       @click="toggleDrawer"
     >
-      <i class="bx bx-menu text-white text-3xl sm:text-4xl"></i>
+      <i class="bx bx-menu text-white text-3xl sm:text-4xl cursor-pointer"></i>
     </div>
     <div
       class="live-prices-text flex-1 text-white text-xl sm:text-2xl flex items-center justify-center"

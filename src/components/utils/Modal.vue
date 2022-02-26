@@ -11,13 +11,13 @@
         class="absolute w-6 h-6 pr-3 pt-3 top-0 right-0 flex items-center justify-center cursor-pointer"
         @click="$emit('ModalClosed')"
       >
-        <i class="bx bx-x text-2xl text-white"></i>
+        <i class="bx bx-x text-2xl text-white cursor-pointer"></i>
       </div>
     </div>
   </div>
   <div
     v-if="isOpen"
-    class="absolute inset-0 z-40 bg-gray-800 opacity-25"
+    class="absolute inset-0 z-40 bg-gray-500 opacity-25"
     @click="$emit('ModalClosed')"
   ></div>
 </template>
