@@ -6,6 +6,7 @@ const CoinGeckoClient = new CoinGecko();
 
 export default createStore({
   state: {
+    userAuthenticated: false,
     isDrawerOpen: false,
     globalData: {},
     top10Coins: {},

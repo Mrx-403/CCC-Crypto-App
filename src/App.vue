@@ -9,7 +9,26 @@
   -moz-osx-font-smoothing: grayscale;
 }
 * {
-    -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent;
+}
+html,
+body,
+div,
+a,
+i,
+button,
+select,
+option,
+optgroup,
+hr,
+br {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
 }
 html {
   scroll-behavior: smooth;

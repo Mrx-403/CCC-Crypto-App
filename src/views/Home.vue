@@ -7,7 +7,7 @@
   </div>
 
   <div class="main-container bg-gray-900 w-full" v-if="showData">
-    <Header />
+    <Header @authModalOpened="isAuthModalOpen = true" />
     <Drawer />
     <MarketGlobalStatus :globalData="globalData" />
     <SearchBox />
@@ -50,6 +50,21 @@
       :index="index"
       :coinInfo="coin"
     />
+    <Modal
+      :isOpen="isAuthModalOpen"
+      :insetX="'inset-x-1/10 lg:inset-x-1/4'"
+      :insetY="'inset-y-1/4'"
+      @ModalClosed="isAuthModalOpen = false"
+    >
+      <LoginForm
+        @changeauthModalType="authModalType = 'Signup'"
+        v-if="authModalType == 'Login'"
+      />
+      <SignupForm
+        @changeauthModalType="authModalType = 'Login'"
+        v-if="authModalType == 'Signup'"
+      />
+    </Modal>
   </div>
 </template>
 
@@ -59,6 +74,9 @@ import MarketGlobalStatus from "../components/MarketGlobalStatus.vue";
 import SearchBox from "../components/SearchBox.vue";
 import CoinBox from "../components/CoinBox.vue";
 import Drawer from "../components/Drawer.vue";
+import Modal from "../components/utils/Modal.vue";
+import LoginForm from "../components/LoginForm.vue";
+import SignupForm from "../components/SignupForm.vue";
 import SyncLoader from "vue-spinner/src/SyncLoader.vue";
 export default {
   name: "Home",
@@ -68,12 +86,17 @@ export default {
     SearchBox,
     CoinBox,
     Drawer,
+    Modal,
+    LoginForm,
+    SignupForm,
     SyncLoader,
   },
   data() {
     return {
       showData: false,
       intervalFunc: null,
+      isAuthModalOpen: false,
+      authModalType: "Login",
     };
   },
   computed: {
