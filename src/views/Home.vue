@@ -52,8 +52,8 @@
     />
     <Modal
       :isOpen="isAuthModalOpen"
-      :insetX="'inset-x-1/10 lg:inset-x-1/4'"
-      :insetY="'inset-y-1/4'"
+      :insetX="'sm:inset-x-1/10 lg:inset-x-1/4'"
+      :insetY="'md:inset-y-1/5'"
       @ModalClosed="isAuthModalOpen = false"
     >
       <LoginForm

@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="isOpen"
-    class="fixed overflow-x-hidden overflow-y-auto flex z-50"
+    class="fixed overflow-x-hidden overflow-y-auto flex inset-0 z-50"
     id="modal-container"
     :class="[insetX, insetY]"
   >
@@ -51,16 +51,10 @@ export default {
 </script>
 
 <style scoped>
-@media (min-height: 900px) {
+@media (min-height: 900px) and (min-width : 650px) {
   #modal-container {
-    top: 29%;
-    bottom: 29%;
-  }
-}
-@media (max-height: 650px) {
-  #modal-container {
-    top: 22%;
-    bottom: 22%;
+    top: 32%;
+    bottom: 32%;
   }
 }
 </style>
