@@ -2,8 +2,8 @@
   <div
     class="bg-gray-800 shadow-xl rounded-lg h-full w-full flex p-4 justify-between items-center"
   >
-    <div class="input-form w-full sm:w-2/3 flex flex-col items-center">
-      <div class="svg-container flex sm:hidden mb-4">
+    <div class="input-form w-full sm:w-2/3 flex flex-col items-center" v-if="!showHeightWarning">
+      <div class="mobile-svg-container flex sm:hidden mb-4" v-if="showMobileSvg">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           x="0px"
@@ -133,12 +133,14 @@
         required
         placeholder="Email Address"
         class="py-3 px-5 bg-gray-700 shadow-lg rounded-lg w-4/5 mb-4 outline-none border-none text-gray-300 text-sm"
+        @focus="checkHeight"
       />
       <input
         type="password"
         required
         placeholder="Password"
         class="py-3 px-5 bg-gray-700 shadow-lg rounded-lg w-4/5 mb-3 outline-none border-none text-gray-300 text-sm"
+        @focus="checkHeight"
       />
       <h2
         class="w-4/5 change-auth-modal-text mb-2 text-sm font-medium text-gray-400 hover:text-green-500 cursor-pointer"
@@ -152,7 +154,7 @@
         Login
       </div>
     </div>
-    <div class="svg-container w-1/3 hidden sm:flex">
+    <div class="svg-container w-1/3 hidden sm:flex" v-if="!showHeightWarning">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         x="0px"
@@ -187,12 +189,48 @@
         </g>
       </svg>
     </div>
+    <div v-if="showHeightWarning"  class="w-4/5 text-center rounded-full mx-auto py-4 px-6 border-2 border-green-600 shadow-lg">
+      <h2 class="text-white text-xl">Please use your device vertically to enter information</h2>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "LoginForm"
+  name: "LoginForm",
+  data(){
+    return {
+      showMobileSvg : true,
+      showHeightWarning : false,
+    }
+  },
+  methods : {
+    checkHeight(){
+      if(window.innerHeight < 400 && window.innerWidth < 1024){
+        this.showHeightWarning = true
+        return;
+      }
+    }
+  },
+  mounted(){
+    window.addEventListener('resize',()=>{
+      const windowHeight = window.innerHeight;
+      if(windowHeight > 380 ){
+        this.showHeightWarning = false
+      }
+      if(windowHeight < 380){
+        this.showHeightWarning = true
+      }
+      if(windowHeight < 500 ){
+        this.showMobileSvg = false
+        return;
+      }
+      if(windowHeight > 500 ){
+        this.showMobileSvg = true
+        return;
+      }
+    })
+  }
 };
 </script>
 
